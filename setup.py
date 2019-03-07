@@ -22,7 +22,8 @@ setuptools.setup(
         "isimud/archive/v0.1.tar.gz",
     keywords=["isimud", "sensors", "wifi", "networking"],
     install_requires=[
-       "pyroute2"
+        "netifaces",
+        "pyroute2"
     ],
     classifiers=[
         "Intended Audience :: Developers",
