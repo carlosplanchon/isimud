@@ -21,6 +21,9 @@ setuptools.setup(
     download_url="https://github.com/carlosplanchon/"
         "isimud/archive/v0.1.tar.gz",
     keywords=["isimud", "sensors", "wifi", "networking"],
+    install_requires=[
+       "pyroute2"
+    ],
     classifiers=[
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
