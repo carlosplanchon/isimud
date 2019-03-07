@@ -79,6 +79,7 @@ def __get_interface_stats(interface: str) -> Any:
 
 def interface_operstate(interface: str) -> Optional[str]:
     """
+    Get the operstate of an interface.
 
     :param interface: str: Network interface.
 
@@ -97,6 +98,7 @@ def interface_operstate(interface: str) -> Optional[str]:
 
 def interface_mac_address(interface: str) -> str:
     """
+    Get the MAC address of an interface.
 
     :param interface: str: Network interface.
 
@@ -107,6 +109,7 @@ def interface_mac_address(interface: str) -> str:
 
 def interface_recv_bytes(interface: str) -> int:
     """
+    Get the recv bytes of an interface.
 
     :param interface: str: Network interface.
 
@@ -116,6 +119,7 @@ def interface_recv_bytes(interface: str) -> int:
 
 def interface_sent_bytes(interface: str) -> int:
     """
+    Get the sent bytes of an interface.
 
     :param interface: str: Network interface.
 
@@ -125,6 +129,7 @@ def interface_sent_bytes(interface: str) -> int:
 
 def access_point_essid(interface: str) -> Optional[str]:
     """
+    Get the AP ESSID.
 
     :param interface: str: Network interface.
 
@@ -139,6 +144,7 @@ def access_point_essid(interface: str) -> Optional[str]:
 
 def access_point_signal_percent(interface: str) -> Optional[int]:
     """
+    Get the AP Signal percent.
 
     :param interface: str: Network interface.
 
@@ -153,6 +159,7 @@ def access_point_signal_percent(interface: str) -> Optional[int]:
 
 def access_point_mac_address(interface: str) -> Optional[str]:
     """
+    Get the AP MAC.
 
     :param interface: str: Network interface.
 
