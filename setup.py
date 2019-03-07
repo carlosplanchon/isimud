@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="isimud",
     packages=["isimud"],
-    version="0.1",
+    version="0.2",
     license="GPL3",
     description="Package to get commonly used details of the network "
             "interface and access points you are using..",
@@ -19,7 +19,7 @@ setuptools.setup(
     author_email="bubbledoloresuruguay2@gmail.com",
     url="https://github.com/carlosplanchon/isimud",
     download_url="https://github.com/carlosplanchon/"
-        "isimud/archive/v0.1.tar.gz",
+        "isimud/archive/v0.2.tar.gz",
     keywords=["isimud", "sensors", "wifi", "networking"],
     install_requires=[
         "netifaces",
