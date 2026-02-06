@@ -2,9 +2,9 @@
 *Package to get commonly used details of the network interface and access points you are using.*
 
 ## Installation
-### Install with pip
+### Install with uv:
 ```
-pip3 install -U isimud
+uv add isimud
 ```
 
 ## Features
