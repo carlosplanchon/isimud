@@ -4,10 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "isimud"
-version = "0.4"
+version = "0.5"
 description = "Package to get commonly used details of the network interface and access points you are using."
 readme = "README.md"
 license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     {name = "Carlos A. Planchón", email = "carlosandresplanchonprestes@gmail.com"}
 ]
@@ -24,12 +25,34 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "netifaces",
     "pyroute2",
 ]
 
 [project.urls]
+Homepage = "https://github.com/carlosplanchon/isimud"
 Repository = "https://github.com/carlosplanchon/isimud"
+
+[project.optional-dependencies]
+# Optional: Wi-Fi access-point scanning via a Wi-Fi daemon (iwd or NetworkManager) over D-Bus.
+scan = [
+    "jeepney>=0.8",
+]
+dev = [
+    "pytest>=9.1",
+    "pytest-cov>=7.1",
+    "jeepney>=0.8",
+]
 
 [tool.setuptools]
 packages = ["isimud"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--cov=isimud",
+    "--cov-report=term-missing",
+]
