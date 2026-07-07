@@ -1,5 +1,7 @@
 # ifpeek
 
+![ifpeek](https://raw.githubusercontent.com/carlosplanchon/ifpeek/master/assets/banner.jpg)
+
 [![CI](https://github.com/carlosplanchon/ifpeek/actions/workflows/ci.yml/badge.svg)](https://github.com/carlosplanchon/ifpeek/actions/workflows/ci.yml)
 [![PyPI version](https://img.shields.io/pypi/v/ifpeek.svg)](https://pypi.org/project/ifpeek/)
 [![Python versions](https://img.shields.io/pypi/pyversions/ifpeek.svg)](https://pypi.org/project/ifpeek/)
