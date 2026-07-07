@@ -6,6 +6,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/ifpeek.svg)](https://pypi.org/project/ifpeek/)
 [![Python versions](https://img.shields.io/pypi/pyversions/ifpeek.svg)](https://pypi.org/project/ifpeek/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/carlosplanchon/ifpeek)
 
 *Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python.*
 
