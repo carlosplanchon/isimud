@@ -5,17 +5,20 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "isimud"
 version = "0.5"
-description = "Package to get commonly used details of the network interface and access points you are using."
+description = "Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
     {name = "Carlos A. Planchón", email = "carlosandresplanchonprestes@gmail.com"}
 ]
-keywords = ["isimud", "sensors", "wifi", "networking"]
+keywords = ["linux", "networking", "netlink", "nl80211", "pyroute2", "wifi", "network-interfaces"]
 classifiers = [
     "Intended Audience :: Developers",
-    "Topic :: Software Development :: Build Tools",
+    "Intended Audience :: System Administrators",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Networking :: Monitoring",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",

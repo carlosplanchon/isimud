@@ -127,10 +127,12 @@ def __get_interface_number(interface: str) -> Optional[int]:
 
 
 def __get_interface_stats(interface: str) -> Any:
-    """ Return the interface stats dict (from pyroute2.IPRoute). """
+    """ Return the interface stats object (from pyroute2.IPRoute), or None. """
     with IPRoute() as ipr:
-        link = ipr.get_links(ifname=interface)[0]
-        return link.get_attr("IFLA_STATS64") or link.get_attr("IFLA_STATS")
+        links = ipr.get_links(ifname=interface)
+    if not links:
+        return None
+    return links[0].get_attr("IFLA_STATS64") or links[0].get_attr("IFLA_STATS")
 
 
 def interface_operstate(interface: str) -> Optional[str]:
@@ -152,35 +154,38 @@ def interface_operstate(interface: str) -> Optional[str]:
     return None
 
 
-def interface_mac_address(interface: str) -> str:
+def interface_mac_address(interface: str) -> Optional[str]:
     """
-    Get the MAC address of an interface.
+    Get the MAC address of an interface, or None if it cannot be resolved.
 
     :param interface: str: Network interface.
 
     """
     with IPRoute() as ipr:
-        return ipr.get_links(ifname=interface)[0].get_attr("IFLA_ADDRESS")
+        links = ipr.get_links(ifname=interface)
+    return links[0].get_attr("IFLA_ADDRESS") if links else None
 
 
-def interface_recv_bytes(interface: str) -> int:
+def interface_recv_bytes(interface: str) -> Optional[int]:
     """
-    Get the recv bytes of an interface.
+    Get the recv bytes of an interface, or None if it cannot be resolved.
 
     :param interface: str: Network interface.
 
     """
-    return __get_interface_stats(interface)["rx_bytes"]
+    stats = __get_interface_stats(interface)
+    return stats["rx_bytes"] if stats is not None else None
 
 
-def interface_sent_bytes(interface: str) -> int:
+def interface_sent_bytes(interface: str) -> Optional[int]:
     """
-    Get the sent bytes of an interface.
+    Get the sent bytes of an interface, or None if it cannot be resolved.
 
     :param interface: str: Network interface.
 
     """
-    return __get_interface_stats(interface)["tx_bytes"]
+    stats = __get_interface_stats(interface)
+    return stats["tx_bytes"] if stats is not None else None
 
 
 def interface_mtu(interface: str) -> Optional[int]:

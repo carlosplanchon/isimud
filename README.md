@@ -5,7 +5,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/isimud.svg)](https://pypi.org/project/isimud/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-*Package to get commonly used details of the network interface and access points you are using.*
+*Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python.*
 
 > **Linux only.** Isimud relies on `pyroute2` (netlink), its single runtime dependency.
 
@@ -85,9 +85,9 @@ for ap in isimud.scan_access_points():          # strongest signal first
 #             signal_dbm=None, signal_percent=100, security='psk', connected=True)
 ```
 
-`signal_percent` (0-100) is always present. `signal_dbm` is filled by iwd / wpa_supplicant and `None`
-on NetworkManager (percentage-only); `bssid` and `frequency` are filled by NetworkManager /
-wpa_supplicant and `None` on iwd (its scan is network-centric).
+`signal_percent` (0-100) is always present. `signal_dbm` is usually filled by iwd / wpa_supplicant
+and `None` on NetworkManager (percentage-only); `bssid` and `frequency` are usually filled by
+NetworkManager / wpa_supplicant and `None` on iwd (its scan is network-centric).
 
 > **Backend status:** the **iwd** backend is verified against a live daemon. The **NetworkManager** and
 > **wpa_supplicant** backends are implemented against their documented D-Bus APIs and unit-tested, but not

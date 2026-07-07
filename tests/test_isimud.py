@@ -184,6 +184,13 @@ class TestInterfaceAttributes:
         assert isimud.interface_mac_address("eth0") == "00:11:22:33:44:55"
         assert isimud.interface_sent_bytes("eth0") == 2
 
+    def test_unknown_interface_returns_none(self, monkeypatch):
+        # Consistent with the rest of the library: unknown interface -> None (not IndexError).
+        monkeypatch.setattr(mod, "IPRoute", lambda: FakeIPRoute(links=[]))
+        assert isimud.interface_mac_address("nope0") is None
+        assert isimud.interface_recv_bytes("nope0") is None
+        assert isimud.interface_sent_bytes("nope0") is None
+
 
 class TestOperstate:
     def test_up(self, monkeypatch):
@@ -274,6 +281,10 @@ class TestInterfaceExtras:
     def test_stats_none_when_absent(self, monkeypatch):
         monkeypatch.setattr(mod, "IPRoute", lambda: FakeIPRoute(link=FakeMsg()))
         assert isimud.interface_stats("eth0") is None
+
+    def test_stats_unknown_interface(self, monkeypatch):
+        monkeypatch.setattr(mod, "IPRoute", lambda: FakeIPRoute(links=[]))
+        assert isimud.interface_stats("nope0") is None
 
 
 class TestInterfaceRate:
