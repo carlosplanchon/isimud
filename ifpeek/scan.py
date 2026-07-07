@@ -3,11 +3,11 @@
 """
 Nearby Wi-Fi access-point scanning via a system Wi-Fi daemon over D-Bus.
 
-Optional feature: needs the ``scan`` extra (``uv add "isimud[scan]"``, which pulls
+Optional feature: needs the ``scan`` extra (``uv add "ifpeek[scan]"``, which pulls
 in ``jeepney``). It auto-detects and uses whichever Wi-Fi daemon is running: **iwd**
 (``net.connman.iwd``) or **NetworkManager** (``org.freedesktop.NetworkManager``).
 
-Unlike the rest of isimud it does not use pyroute2: a fresh scan is a privileged
+Unlike the rest of ifpeek it does not use pyroute2: a fresh scan is a privileged
 operation, so it is delegated to the daemon, which scans and returns parsed results
 without requiring root (the caller must be allowed on the daemon's D-Bus, e.g. be in
 the ``wheel``/``network`` group). Results reflect the daemon's current view.
@@ -41,7 +41,7 @@ class AccessPoint(NamedTuple):
     ``signal_dbm`` is None on backends that only report a percentage
     (NetworkManager); ``signal_percent`` (0-100) is always present. ``bssid`` and
     ``frequency`` (MHz) are None on iwd, whose scan is network-centric; use
-    ``isimud.access_point_mac_address`` / ``access_point_frequency`` for the AP you
+    ``ifpeek.access_point_mac_address`` / ``access_point_frequency`` for the AP you
     are connected to.
     """
     ssid: str
@@ -66,7 +66,7 @@ def scan_access_points(interface: Optional[str] = None) -> List[AccessPoint]:
     """
     if not _HAVE_JEEPNEY:  # pragma: no cover - only without the scan extra
         raise RuntimeError(
-            "scan_access_points() needs the 'scan' extra: uv add 'isimud[scan]'"
+            "scan_access_points() needs the 'scan' extra: uv add 'ifpeek[scan]'"
         )
 
     conn = open_dbus_connection(bus="SYSTEM")

@@ -55,7 +55,7 @@ jobs:
     # environment name. No API tokens/secrets required.
     environment:
       name: pypi
-      url: https://pypi.org/project/isimud/
+      url: https://pypi.org/project/ifpeek/
     permissions:
       id-token: write  # mint the OIDC token PyPI verifies
     steps:

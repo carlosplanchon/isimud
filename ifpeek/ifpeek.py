@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Package to get commonly used details of the network interface
-and access point you are using.
+Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python.
 """
 
 from typing import Any, Dict, Iterator, List, NamedTuple, Optional

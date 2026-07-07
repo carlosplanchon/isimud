@@ -9,8 +9,8 @@ import pytest
 
 pytest.importorskip("jeepney")  # the `scan` extra
 
-import isimud
-from isimud import scan
+import ifpeek
+from ifpeek import scan
 
 from jeepney import MessageType
 
@@ -48,22 +48,22 @@ class TestDispatch:
     def test_uses_iwd_when_present(self, monkeypatch):
         self._detect(monkeypatch, iwd=True)
         monkeypatch.setattr(scan, "_scan_iwd", lambda conn, iface: ["iwd-result"])
-        assert isimud.scan_access_points() == ["iwd-result"]
+        assert ifpeek.scan_access_points() == ["iwd-result"]
 
     def test_uses_networkmanager_when_iwd_absent(self, monkeypatch):
         self._detect(monkeypatch, iwd=False, nm=True)
         monkeypatch.setattr(scan, "_scan_networkmanager", lambda conn, iface: ["nm-result"])
-        assert isimud.scan_access_points() == ["nm-result"]
+        assert ifpeek.scan_access_points() == ["nm-result"]
 
     def test_uses_wpa_supplicant_when_others_absent(self, monkeypatch):
         self._detect(monkeypatch, wpas=True)
         monkeypatch.setattr(scan, "_scan_wpa_supplicant", lambda conn, iface: ["wpas-result"])
-        assert isimud.scan_access_points() == ["wpas-result"]
+        assert ifpeek.scan_access_points() == ["wpas-result"]
 
     def test_raises_when_no_daemon(self, monkeypatch):
         self._detect(monkeypatch, iwd=False, nm=False)
         with pytest.raises(RuntimeError, match="Wi-Fi daemon on D-Bus"):
-            isimud.scan_access_points()
+            ifpeek.scan_access_points()
 
 
 # --- iwd backend ------------------------------------------------------------
@@ -292,7 +292,7 @@ class TestHelpers:
 class TestScanRealSmoke:
     def test_scan_against_live_daemon(self):
         try:
-            aps = isimud.scan_access_points()
+            aps = ifpeek.scan_access_points()
         except Exception:
             pytest.skip("no reachable Wi-Fi daemon")
         assert isinstance(aps, list)

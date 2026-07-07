@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    # Linux only: isimud depends on pyroute2 (netlink).
+    # Linux only: ifpeek depends on pyroute2 (netlink).
     name: test (py${{ matrix.python-version }})
     runs-on: ubuntu-latest
     strategy:

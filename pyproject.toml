@@ -3,7 +3,7 @@ requires = ["setuptools>=77.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "isimud"
+name = "ifpeek"
 version = "0.5"
 description = "Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python."
 readme = "README.md"
@@ -32,11 +32,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/carlosplanchon/isimud"
-Repository = "https://github.com/carlosplanchon/isimud"
+Homepage = "https://github.com/carlosplanchon/ifpeek"
+Repository = "https://github.com/carlosplanchon/ifpeek"
 
 [project.optional-dependencies]
-# Optional: Wi-Fi access-point scanning via a Wi-Fi daemon (iwd or NetworkManager) over D-Bus.
+# Optional: Wi-Fi access-point scanning via a Wi-Fi daemon (iwd, NetworkManager, or wpa_supplicant) over D-Bus.
 scan = [
     "jeepney>=0.8",
 ]
@@ -47,7 +47,7 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["isimud"]
+packages = ["ifpeek"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -56,6 +56,6 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "--verbose",
-    "--cov=isimud",
+    "--cov=ifpeek",
     "--cov-report=term-missing",
 ]
