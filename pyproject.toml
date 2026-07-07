@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ifpeek"
-version = "0.5"
+version = "1.0.0"
 description = "Inspect Linux network interfaces, Wi-Fi state, routes, DNS, and network events from Python."
 readme = "README.md"
 license = "MIT"
